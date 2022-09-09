@@ -1,0 +1,61 @@
+<script>
+    //doi tuong
+        //thuoc tinh
+            /*
+            name: Thang
+            age: 20
+            */
+        //phuong thuc
+            /*
+            learn
+            work
+            */
+
+    function learn(){
+        return '123';
+    }   
+
+    learn();//123
+
+    // function work(){
+
+    // } 
+
+    let Thang = {
+        name: 'Thắng',
+        age: 20,
+        learn : function(){
+            return 'learn';
+        },
+        work: function(){
+            console.log('work');
+        },
+        info : function(){
+            console.log( this.name );
+            console.log( this.lear() );
+        }
+    }
+    
+    //truy cap thuoc tinh
+    //name
+    console.log(Thang.name);
+    //age
+    console.log(Thang.age);
+
+    //truy cap phuong thuc
+    console.log( Thang.learn() );
+    Thang.work();
+
+    //thay doi name va age, in lai doi tuong Thang
+    Thang.name = 'Cuong';
+
+    let Phi = Thang;
+    Phi.name = 'Phi';
+
+    //Thang.name = ?
+
+    console.log(Thang)
+
+
+    
+</script>

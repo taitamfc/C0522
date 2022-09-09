@@ -1,0 +1,30 @@
+<script>
+    var Circle = function(){
+        //thuoc tinh
+        this.radius = 0.0;
+        this.color  = '';
+
+        //phuong thuc
+        this.getRadius = function(){
+            return this.radius;
+        }
+        this.getArea = function(){
+            return this.radius * this.radius * 3.14;
+        }
+    }
+
+    let Circle_1 = new Circle();
+    //gan gia tri thuoc tinh
+    Circle_1.radius = 10;
+    Circle_1.color = 'red';
+    //truy cap phuong thuc
+    console.log( Circle_1.getArea() );
+
+    let Circle_2 = new Circle();
+    //gan gia tri thuoc tinh
+    Circle_2.radius = 20;
+    Circle_2.color = 'blue';
+    //truy cap phuong thuc
+    console.log( Circle_2.getArea() );
+
+</script>

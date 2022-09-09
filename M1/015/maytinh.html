@@ -1,0 +1,34 @@
+<script>
+    var a = 5;
+    var b = 6;
+
+    let MayTinh = {
+        so_thu_nhat: 0,
+        so_thu_hai: 0,
+        cong:function(){
+            return this.so_thu_nhat + this.so_thu_hai;
+        },
+        tru:function(){
+            return 0;
+        },
+        nhan:function(){
+            return 0;
+        },
+        chia:function(){
+            return 0;
+        }
+    }
+    
+
+
+
+    //gan gia tri thuoc tinh so_thu_nhat va so_thu_hai
+    MayTinh.so_thu_nhat = a;
+    MayTinh.so_thu_hai = b;
+    console.log('cong', MayTinh.cong() )
+    console.log('tru', MayTinh.tru() )
+    console.log('nhan', MayTinh.nhan() )
+    console.log('chia', MayTinh.chia() )
+
+    console.log(MayTinh  )
+</script>

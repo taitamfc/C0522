@@ -1,0 +1,61 @@
+<script>
+    /*
+    let Thang = {
+        name: 'Thắng',
+        age: 20,
+        learn : function(){
+            return 'learn';
+        },
+        work: function(){
+            console.log('work');
+        },
+        info : function(){
+            console.log( this.name );
+            console.log( this.lear() );
+        }
+    }
+    */
+
+    /*
+    var TEN_LOP = function(){
+        //thuoc tinh
+        this.THUOC_TINH_1 = VALUE_1;
+        this.THUOC_TINH_2 = VALUE_2;
+
+        //phuong thuc
+        this.PHUONG_THUC_1 = function(){  }
+        this.PHUONG_THUC_2 = function(){  }
+    }
+    */
+   var Person = function( ts_name, ts_age ){
+        //thuoc tinh
+        this.name   = ts_name; 
+        this.age    = ts_age; 
+
+        //phuong thuc
+        this.learn = function(){ 
+            return this.name + ' dang hoc bai';
+        }
+        this.work = function(){   }
+        this.info = function(){
+            console.log( this.name );
+            console.log( this.learn() );
+        }
+   }
+
+   //khoi tao doi tuong
+   let Thang = new Person( 'Phi', 19 );
+   console.log(Thang);
+   //truy cap thuoc tinh
+
+   //truy cap phuong thuc
+
+   //gan gia tri thuoc tinh
+
+   //in ra doi tuong
+
+//    let Cuong = new Person();
+//    let Tam = new Person();
+//    let Phi = new Person();
+
+</script>

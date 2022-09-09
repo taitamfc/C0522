@@ -1,0 +1,75 @@
+<script>
+
+    var a = 6;
+    var b;
+    b = a;
+    b = 8;
+
+    var books = ['Toan', 'Ly', 'Hoa'];
+    var hop = books;
+    hop[2] = 'Tieng Anh'; //Toan,Ly,Anh
+    alert(books);
+
+
+    function duoc_uong_ruou_khong(age) {
+        if (age >= 18) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //   duoc_uong_ruou_khong( 18 );//true
+
+    var ok = duoc_uong_ruou_khong(18);
+    //   if( ok == true ){
+    //     alert('Duoc uong ruou');
+    //   }else{
+    //     alert('Duoc uong nuoc ngot')
+    //   }
+
+    function cong(a, b) {
+        //a: 7
+        //b: 5
+        return a + b;
+    }
+
+    function tru(a, b) {
+        return a - b;
+    }
+
+    function nhan(a, b) {
+        return a * b;
+    }
+
+    function chia(a, b) {
+        return a / b;
+    }
+
+    function maytinh(ts_a, ts_b, phep_tinh) {
+        var ketqua;
+        switch (phep_tinh) {
+            case 'cong':
+                ketqua = cong(ts_a, ts_b);//12
+                break;
+            case 'tru':
+                ketqua = tru(ts_a, ts_b)
+                break;
+            case 'nhan':
+                ketqua = nhan(ts_a, ts_b)
+                break;
+            case 'chia':
+                ketqua = chia(ts_a, ts_b)
+                break;
+            default:
+                break;
+        }
+        return ketqua;
+    }
+
+
+    console.log('nhan', maytinh(7, 5, 'nhan'));
+    console.log('chia', maytinh(7, 5 ,'ciha'));
+    console.log('cong', maytinh(7, 5, 'cong'));
+    console.log('tru', maytinh(7, 5, 'tru'));
+</script>

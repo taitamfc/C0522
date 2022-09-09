@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        
+        <div class="row">
+            <div class="col bg-primary">
+                Column
+            </div>
+            <div class="col bg-danger">
+                Column
+            </div>
+            <div class="col bg-success">
+                Column
+            </div>
+        </div>
+
+        <!-- Hang 1 -->
+        <div class="row">
+            <div class="col-md-12 bg-info text-center">
+                Col 12123
+            </div>        
+        </div>
+
+        <!-- Hang 2 -->
+        <div class="row">
+            <div class="col-md-6 col-8 bg-danger text-center"> COL6 </div>
+            <div class="col-md-6 col-4 bg-success text-center"> COL6 </div>
+        </div>
+
+        <!-- Hang 3 -->
+        <div class="row">
+            <div class="col-md-6 bg-success text-center"> COL6 </div>
+            <div class="col-md-6 bg-info text-center"> COL6 </div>
+        </div>
+
+        <!-- Hang 4 -->
+        <div class="row">
+            <div class="col-lg-12 bg-danger text-center">
+                Col 12
+            </div>   
+        </div>
+
+        <!-- Hang 5 -->
+        <div class="row">
+            <div class="col-md-4 bg-success text-center"> COL6 </div>
+            <div class="col-md-4 bg-info text-center"> COL6 </div>
+            <div class="col-md-4 bg-success text-center"> COL6 </div>
+        </div>
+
+        <!-- Hang 6 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <form class="mt-3" action="" method="get">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+  </body>
+</html>
