@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/',function(){
+    return view('admin.layouts.master');
+});
+
 Route::get('products/trash',[App\Http\Controllers\ProductController::class,'trash']);
 Route::resource('products',App\Http\Controllers\ProductController::class);
 /*

@@ -13,7 +13,28 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $user_name = 'Admin';
+
+        $items = [
+            [
+                'username' => 'Admin',
+                'gender' => 'male'
+            ],
+            [
+                'username' => 'Admin 2',
+                'gender' => 'male'
+            ]
+        ];
+
+
+        // return view('products.index', compact('user_name'));
+        $params = [
+            'user_name' => $user_name,
+            'items' => $items,
+        ];
+        return view('products.index', $params);
+        // return view('products.index')->with('user_name',$user_name);
+        // return view('products.index')->with('user_name');
     }
 
     /**
@@ -23,7 +44,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // $user_name = 'Admin';
+        // $params = [
+        //     'user_name' => $user_name
+        // ];
+        return view('products.create');
     }
 
     /**
@@ -45,7 +70,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('products.show');
     }
 
     /**
@@ -56,7 +81,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('products.edit');
     }
 
     /**
