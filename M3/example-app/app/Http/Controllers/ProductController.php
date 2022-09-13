@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -13,28 +15,18 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $user_name = 'Admin';
+        
+        // $items = DB::table('products')->pluck('name', 'price')->toArray();
+        $items = Product::all();
 
-        $items = [
-            [
-                'username' => 'Admin',
-                'gender' => 'male'
-            ],
-            [
-                'username' => 'Admin 2',
-                'gender' => 'male'
-            ]
-        ];
+        $items = $items->reject(function ($item) {
+            return $item->id == 1;
+        });
 
-
-        // return view('products.index', compact('user_name'));
-        $params = [
-            'user_name' => $user_name,
-            'items' => $items,
-        ];
+        
+        dd($items);
+        $params = [];
         return view('products.index', $params);
-        // return view('products.index')->with('user_name',$user_name);
-        // return view('products.index')->with('user_name');
     }
 
     /**
@@ -59,7 +51,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->category_id = $request->category_id;
+        $product->save();
     }
 
     /**
@@ -70,7 +67,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('products.show');
+        //dung DB truy van vao products voi dieu kien id = 1
+        // $item = DB::table('products')->where('id','=',1)->first();
+        // $item = Product::find(1);
+        $item = Product::find(3);
+        dd($item);
     }
 
     /**
@@ -94,6 +95,13 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $request = new Request();
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->category_id = $request->category_id;
+        $product->save();
+        
     }
 
     /**
@@ -103,7 +111,12 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {        
+        $product = Product::find($id);
+        if($product){
+            $product->delete();
+        }else{
+
+        }
     }
 }
