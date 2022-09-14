@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Order;
 
 class ProductController extends Controller
 {
@@ -15,13 +17,27 @@ class ProductController extends Controller
      */
     public function index()
     {
-        
+
+        $order = Order::with('products')->find(1);
+        dd($order->toArray());
+
+
+        // $category = Category::with('products')->find(1);
+        // return response()->json($category);
+        // dd($category->toArray());
+
         // $items = DB::table('products')->pluck('name', 'price')->toArray();
         $items = Product::all();
 
-        $items = $items->reject(function ($item) {
-            return $item->id == 1;
-        });
+        // $items = $items->reject(function ($item) {
+        //     return $item->id == 1;
+        // });
+
+        foreach( $items as $item ){
+            echo $item->category->name;
+        }
+
+        //
 
         
         dd($items);
@@ -70,7 +86,7 @@ class ProductController extends Controller
         //dung DB truy van vao products voi dieu kien id = 1
         // $item = DB::table('products')->where('id','=',1)->first();
         // $item = Product::find(1);
-        $item = Product::find(3);
+        $item = Product::with('category')->find(1)->toArray();
         dd($item);
     }
 
@@ -118,5 +134,6 @@ class ProductController extends Controller
         }else{
 
         }
+
     }
 }
