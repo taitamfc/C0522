@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
+use Illuminate\Support\Facades\Validator;
+
+use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller
 {
@@ -65,8 +68,30 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
+
+        // $roles = [
+        //     'name'          => 'required|min:3|unique:products',
+        //     'price'         => 'required',
+        //     'description'   => 'required',
+        // ];
+        // $messages = [
+        //     'min' => 'Bat buoc lon hon',
+        //     'name.required' => 'Ban chua nhap ten',
+        //     'price.required' => 'Ban chua nhap gia',
+        // ];
+        // // $request->validate($roles,$messages);//that bai => create
+        // $validator = Validator::make( $request->all(),$roles,$messages);
+
+        // // Neu that bai
+        // if ($validator->fails()) {
+        //     return redirect()->route('products.create')
+        //             ->withErrors($validator) //kem theo loi
+        //             ->withInput()//kem gia tri cu
+        //             ;
+        // }
+
         $product = new Product();
         $product->name = $request->name;
         $product->price = $request->price;
