@@ -8,6 +8,9 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\ModelNotFoundException;  
+
 
 use App\Http\Requests\StoreProductRequest;
 
@@ -22,7 +25,7 @@ class ProductController extends Controller
     {
 
         $order = Order::with('products')->find(1);
-        dd($order->toArray());
+        // dd($order->toArray());
 
 
         // $category = Category::with('products')->find(1);
@@ -43,8 +46,10 @@ class ProductController extends Controller
         //
 
         
-        dd($items);
-        $params = [];
+        // dd($items);
+        $params = [
+            'items' => $items
+        ];
         return view('products.index', $params);
     }
 
@@ -96,8 +101,16 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->description = $request->description;
-        $product->category_id = $request->category_id;
-        $product->save();
+        // $product->category_id = $request->category_id;
+
+        try {
+            $product->save();
+            return redirect()->route('products.index')->with('success','Them thanh cong');
+        } catch (\Exception $e) {
+            Log::error( $e->getMessage() );
+            return redirect()->route('products.index')->with('error','Them khong thanh cong');
+        }
+        
     }
 
     /**
@@ -110,9 +123,14 @@ class ProductController extends Controller
     {
         //dung DB truy van vao products voi dieu kien id = 1
         // $item = DB::table('products')->where('id','=',1)->first();
-        // $item = Product::find(1);
-        $item = Product::with('category')->find(1)->toArray();
-        dd($item);
+        try {
+            $item = Product::findOrFail(5);
+        } catch (ModelNotFoundException  $exception) {
+            return redirect()->route('products.index')->withError('Khong tim thay')->withInput();
+        }
+        
+        
+        
     }
 
     /**
