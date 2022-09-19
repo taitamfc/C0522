@@ -30,3 +30,59 @@ prefix: products
     GET    /{id}                    products.show
     DELETE /{id}                    products.destroy
 */
+
+Route::get('tao_session',function(Request $request){
+    
+    // $_SESSION['user'] = 'Nguyen Van A';
+    // Tao session
+    $request->session()->put('user', 'Nguyen Van A');
+
+    //lay ra
+    $value = $request->session()->get('user');
+    
+    //xoa
+    $request->session()->forget('user');
+
+    //lay ra sau khi xoa
+    $value = $request->session()->get('user');
+});
+
+Route::get('xoa_session',function(Request $request){
+    session()->forget('count');
+});
+Route::get('tao_session_global',function(Request $request){
+    
+    // $_SESSION['user'] = 'Nguyen Van A';
+    // Tao session
+    session(['user' => 'Nguyen Van A']);
+
+    //lay ra
+    $value = session()->get('user');
+    
+    //xoa
+    session()->forget('user');
+
+    //lay ra sau khi xoa
+    $value = session()->get('user');
+
+    dd($value);
+});
+
+Route::get('xem_bai_viet',function(Request $request){
+    if (session()->exists('count')) {
+        $count = session()->get('count');
+    }else{
+        session()->put('count', 0);
+        $count = 0;
+    }
+    // $count = $count + 1;
+    // session()->put('count', $count);
+
+    session()->increment('count');
+
+    return redirect('xem_luot_count');
+});
+Route::get('xem_luot_count',function(Request $request){
+    $count = session()->get('count');
+    echo $count;
+});
