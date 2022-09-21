@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+
+    <table border="1">
+        <thead >
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="kq">
+
+        </tbody>
+    </table>
+
+    <script>
+        //khi tài liệu đã sẵn sàng
+        jQuery( document ).ready( function(){
+            jQuery.ajax({
+                url: 'data.php',
+                method: 'GET',
+                dataType:'json',
+                success: function(res){
+                    let htmlTr = '';
+                    for (const item of res) {
+                        htmlTr += '<tr>';
+                            htmlTr += '<td>'+ item.name +'</td>';
+                            htmlTr += '<td>'+ item.email +'</td>';
+                        htmlTr += '</tr>';
+                    }
+
+                    jQuery('#kq').html(htmlTr);
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
