@@ -86,3 +86,27 @@ Route::get('xem_luot_count',function(Request $request){
     $count = session()->get('count');
     echo $count;
 });
+
+
+Route::get('thanh_cong',function(){
+
+    // Chuyển đổi ngôn ngữ
+    $lang = session()->get('lang');
+    App::setlocale($lang);
+
+    echo __('messages.msg_ok', ['name' => 'kết quả']);
+    echo '<br>';
+    echo trans_choice('messages.apples', 20);
+    echo '<br>';
+    echo __('messages.msg_error', ['name' => 'kết quả']);
+
+    echo '<br>';
+    echo __('MSG_OK');
+    echo '<br>';
+    echo __('MSG_ERROR');
+});
+
+Route::get('change_lang/{lang}',function( $lang ){
+    session(['lang'=>$lang]);
+    return redirect('thanh_cong');
+});

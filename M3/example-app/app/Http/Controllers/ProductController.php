@@ -105,10 +105,10 @@ class ProductController extends Controller
 
         try {
             $product->save();
-            return redirect()->route('products.index')->with('success','Them thanh cong');
+            return redirect()->route('products.index')->with('success',__('messages.msg_ok'));
         } catch (\Exception $e) {
             Log::error( $e->getMessage() );
-            return redirect()->route('products.index')->with('error','Them khong thanh cong');
+            return redirect()->route('products.index')->with('error',__('messages.msg_error'));
         }
         
     }
